@@ -238,7 +238,8 @@ class _LandingPageState extends State<LandingPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                builder:(context)=> const ResultPage(),
+                  ///////yellow
+                builder:(context)=>  ResultPage(result: bmi.toStringAsFixed(2),),
                 )
 
             );
