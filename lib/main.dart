@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:bmi_application/Result Page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,25 +32,49 @@ class _LandingPageState extends State<LandingPage> {
   double _height = 100.0;
   int weight =50;
   int age= 26;
+  double bmi=0;
 
-  void inch()
+
+  void increaseAge()
   {
-    _height++;
+    setState(() {
+      age++;
+    });
   }
 
-  void incw()
+  void decreaseAge()
   {
-    weight++;
+    setState(() {
+      age--;
+    });
   }
 
-  void decw()
+
+  void increaseW()
   {
-    weight--;
+    setState(() {
+      weight++;
+    });
+
   }
 
-  void dech()
+  void decreaseW()
   {
-    _height--;
+    setState(() {
+      weight--;
+    });
+
+  }
+
+
+
+  void calculateBMI()
+  {
+    setState(() {
+      double heightM=_height/100;
+      bmi=weight/(heightM * heightM);
+      print('BMI Value : $bmi');
+    });
   }
 
 
@@ -156,16 +181,17 @@ class _LandingPageState extends State<LandingPage> {
                       child: Card(
                         child: Column(
                           children: [
-                            const Text("Height",
+                            const Text("Age",
                               style: TextStyle (fontSize: 36,fontWeight: FontWeight.bold),),
-                            //Text(${_height}),
+                            Text( "$age",
+                              style: TextStyle(fontSize: 30, color: Colors.blue),),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 ElevatedButton(
-                                    onPressed: inch , child: Icon(Icons.add)),
+                                    onPressed: increaseAge , child: Icon(Icons.add)),
                                 ElevatedButton(
-                                    onPressed: dech, child: Icon(Icons.remove))
+                                    onPressed: decreaseAge, child: Icon(Icons.remove))
                               ],
                             ),
                           ],
@@ -179,15 +205,18 @@ class _LandingPageState extends State<LandingPage> {
                             children: [
                               const Text("Weight",
                                 style: TextStyle (fontSize: 36,fontWeight: FontWeight.bold),),
+                              Text( "$weight",
+                                style: TextStyle(fontSize: 30, color: Colors.blue),),
+
                               Row(
 
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
                                 children: [
                                   ElevatedButton(
-                                      onPressed: incw, child: Icon(Icons.add)),
+                                      onPressed: increaseW, child: Icon(Icons.add)),
                                   ElevatedButton(
-                                      onPressed: decw,
+                                      onPressed: decreaseW,
                                       child: Icon(Icons.remove))
                                 ],
                               ),
@@ -203,8 +232,20 @@ class _LandingPageState extends State<LandingPage> {
 
             const Spacer(),
             ElevatedButton(
-              onPressed: () {},
+
+              onPressed: (){
+              calculateBMI();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                builder:(context)=> const ResultPage(),
+                )
+
+            );
+    },
+
               child: const Text('Calculate'),
+
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.all(16),
                 textStyle: const TextStyle(fontSize: 24),
