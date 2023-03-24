@@ -5,7 +5,6 @@ class ResultPage extends StatefulWidget {
 
   final String result;
 
-
   @override
   State<ResultPage> createState() => _ResultPageState();
 }
@@ -17,15 +16,13 @@ class _ResultPageState extends State<ResultPage> {
       body: Center(
         child: Column(
           children: [
-            Text('Result',
+            Text(
+              'Result',
               style: TextStyle(fontSize: 24, color: Colors.blue),
-
             )
           ],
         ),
       ),
-
     );
   }
 }
-
