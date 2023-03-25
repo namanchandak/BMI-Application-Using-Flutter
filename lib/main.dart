@@ -74,6 +74,12 @@ class _LandingPageState extends State<LandingPage> {
       double heightM=_height/100;
       bmi=weight/(heightM * heightM);
       print('BMI Value : $bmi');
+      if(bmi<18.5)
+        bmi=1;
+      else if(bmi<24.9)
+        bmi=2;
+      else
+        bmi=3;
     });
   }
 
@@ -239,7 +245,8 @@ class _LandingPageState extends State<LandingPage> {
                 context,
                 MaterialPageRoute(
                   ///////yellow
-                builder:(context)=>  ResultPage(result: bmi.toStringAsFixed(2),),
+
+                builder:(context)=>  ResultPage(result: bmi.toString(),),
                 )
 
             );

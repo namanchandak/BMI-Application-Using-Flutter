@@ -5,6 +5,8 @@ class ResultPage extends StatefulWidget {
 
   final String result;
 
+
+
   @override
   State<ResultPage> createState() => _ResultPageState();
 }
@@ -20,8 +22,23 @@ class _ResultPageState extends State<ResultPage> {
               'Result',
               style: TextStyle(fontSize: 50, color: Colors.blue),
             ),
+
+            Text(
+              'The Gift Of Health Is Keeping Me Alive',
+              style: TextStyle(fontSize: 50, color: Colors.green),
+            ),
+
+            // Text(
+            //   widget.result,
+            //   style: TextStyle(fontSize: 70, color: Colors.green),
+            // ),
             ////////sateful
-            Text(widget.result , style: TextStyle(fontSize: 35),)
+            if(widget.result=="1")
+            Text("You should have a healthy diet as you low on BMI ,Please have daily exercise and yoga!" , style: TextStyle(fontSize: 35),),
+            if(widget.result=="2r")
+              Text("You Are Perfect Keep it up and have daily exercise and yoga" , style: TextStyle(fontSize: 35),),
+            if(widget.result=="3")
+              Text("You should have a healthy diet as you high on BMI ,Please have daily exercise and yoga!" , style: TextStyle(fontSize: 35),)
           ],
         ),
       ),
