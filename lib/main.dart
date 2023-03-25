@@ -33,7 +33,8 @@ class _LandingPageState extends State<LandingPage> {
   int weight =50;
   int age= 26;
   double bmi=0;
-
+  Color color=Colors.white;
+  String message="nothing is entered ";
 
   void increaseAge()
   {
@@ -75,11 +76,22 @@ class _LandingPageState extends State<LandingPage> {
       bmi=weight/(heightM * heightM);
       print('BMI Value : $bmi');
       if(bmi<18.5)
-        bmi=1;
+        {
+          message="under Weight";
+          color=Colors.blue;
+        }
       else if(bmi<24.9)
-        bmi=2;
+        {
+          message="you are doing good";
+          color=Colors.green;
+        }
+
       else
-        bmi=3;
+        {
+          message="Over Weight";
+          color=Colors.red;
+        }
+
     });
   }
 
@@ -246,7 +258,7 @@ class _LandingPageState extends State<LandingPage> {
                 MaterialPageRoute(
                   ///////yellow
 
-                builder:(context)=>  ResultPage(result: bmi.toString(),),
+                builder:(context)=>  ResultPage(result: bmi.toStringAsFixed(2),message1: message, color1: color),
                 )
 
             );

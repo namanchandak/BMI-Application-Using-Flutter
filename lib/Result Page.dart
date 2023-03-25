@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ResultPage extends StatefulWidget {
-  const ResultPage({Key? key, required this.result}) : super(key: key);
+  const ResultPage({Key? key, required this.result, required this.color1, required this.message1}) : super(key: key);
 
   final String result;
+  final Color color1;
+  final String message1 ;
 
 
 
@@ -28,18 +30,26 @@ class _ResultPageState extends State<ResultPage> {
               style: TextStyle(fontSize: 50, color: Colors.green),
             ),
 
-            // Text(
-            //   widget.result,
-            //   style: TextStyle(fontSize: 70, color: Colors.green),
-            // ),
-            ////////sateful
-            if(widget.result=="1")
-            Text("You should have a healthy diet as you low on BMI ,Please have daily exercise and yoga!" , style: TextStyle(fontSize: 35),),
-            if(widget.result=="2r")
-              Text("You Are Perfect Keep it up and have daily exercise and yoga" , style: TextStyle(fontSize: 35),),
-            if(widget.result=="3")
-              Text("You should have a healthy diet as you high on BMI ,Please have daily exercise and yoga!" , style: TextStyle(fontSize: 35),)
-          ],
+            Text(
+              widget.result,
+              style: TextStyle(fontSize: 70, color: Colors.green),
+            ),
+            //////sateful
+
+            Expanded(child:
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  widget.message1  ,
+                    style:TextStyle(fontSize:  50, color: widget.color1)
+                  ,
+                )
+              ],
+            )
+            ),
+
+            ],
         ),
       ),
     );
